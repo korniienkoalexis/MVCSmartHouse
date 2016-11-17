@@ -1,0 +1,125 @@
+﻿
+@using SmartHomeEquipment
+
+@model IDictionary<int, Device>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Devices</title>
+   <style>
+       .figure-div {
+           border: 1px solid black;
+           float: left;
+           margin: 3px;
+           padding: 3px;
+           display: inline;
+       }
+
+       .c {
+           text-align: center;
+           border: 1px solid;
+           border-radius: 5px;
+           min-width: 50px;
+           display: inline-block;
+           padding: 5px 5px;
+           text-decoration: none;
+           color: black;
+           background-color: #DDD;
+       }
+
+    </style>
+    
+</head>
+<body>
+    
+    <div>
+        @using (Html.BeginForm("Add", "Devices"))
+        {
+            @Html.Label("Device Name")
+            @Html.TextBox("deviceName", null, new { @class = "form-control" })
+            @Html.DropDownList("deviceType", (IEnumerable<SelectListItem>)ViewBag.DevisesList)
+            <input class="c" type="submit" value="ADD">
+        }
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="figure-div">
+                Device: @item.Value.name<br>
+
+                @Html.Label("Device state", item.Value.ToString())
+                <br />
+                <a class="c" href="/Devices/On/@item.Key">ON/OFF</a><br>
+                <br />
+                   @if (item.Value is IVolume)
+                    {
+                    
+                    <a class="c" href="/Devices/VolumeUP/@item.Key">Volume+</a>
+                    <a class="c" href="/Devices/VolumeDown/@item.Key">Volume-</a>
+                    }
+                             
+                @if (item.Value is IRadioChannel)
+                     {
+                    <a class="c" href="/Devices/RadioChanelUP/@item.Key">Channel+</a>
+                    <a class="c" href="/Devices/RadioChanelDown/@item.Key">Channel-</a>
+                    }
+
+                @if (item.Value is ITVChangeChannel)
+                {                    
+                        <a class="c" href="/Devices/TVChanelUP/@item.Key">Channel+</a>
+                        <a class="c" href="/Devices/TVChanelUP/@item.Key">Channel-</a>                    
+                }
+                
+                @if (item.Value is IMusicCenterMode)
+                {      
+                     <a class="c" href="/Devices/ChangeMusicCenterMode/@item.Key">Change mode</a>  
+                }
+
+                @if (item.Value is IChangeCD)
+                {                    
+                    <a class="c" href="/Devices/ChangeCD/@item.Key">Change CD</a>
+                }
+
+                @if (item.Value is IDeviceChangeMode)
+                {
+                    <a class="c" href="/Devices/ChangeModeAirConditioner/@item.Key">Change mode</a>
+                }
+
+                @if (item.Value is ITemperature)
+                {
+                    <a class="c" href="/Devices/TemperatureUpAirConditioner/@item.Key">Temperature+</a>
+                    <a class="c" href="/Devices/TemperatureDownAirConditioner/@item.Key">Temperature-</a>
+                }
+
+                @if (item.Value is IFrostMode)
+                {
+                    <a class="c" href="/Devices/RefregeratorMode/@item.Key">Frost Mode</a>
+                }
+
+                @if (item.Value is IDoorOpen)
+                {
+                 <a class="c" href="/Devices/DoorOpenClose/@item.Key">Front door: Open/Close</a>
+                }
+
+                @if (item.Value is IFrostdoorOpen)
+                {
+                <a class="c" href="/Devices/FrostDoorOpenClose/@item.Key">Frost door: Open/Close</a>
+                }
+                <p>
+                @using (Html.BeginForm("Delete/" + item.Key, "Devices"))
+                {
+                    <input class="c" type="submit" value="Remove" />
+                }</p>
+                 
+            </div>
+        }
+        <div>
+
+        </div>
+</body>
+</html>

@@ -80,7 +80,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\MVCSmartHouse.dll" />
+    <Content Include="bin\MVCSmartHouse.pdb" />
+    <Content Include="bin\SmartHomeEquipment.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.Deployment.dll" />
+    <Content Include="bin\System.Web.Webpages.Deployment.xml" />
+    <Content Include="bin\System.Web.Webpages.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.dll" />
+    <Content Include="bin\System.Web.Webpages.Razor.xml" />
+    <Content Include="bin\System.Web.Webpages.xml" />
     <Content Include="Global.asax" />
+    <Content Include="bin\MVCSmartHouse.dll.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Image\Mode.gif" />
     <Content Include="Image\volumedown.png" />
